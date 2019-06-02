@@ -1,3 +1,7 @@
+// convert getstatusmessage to custom getter for statusmessage
+// convert getpuzzle to a custom getter for puzzle
+// change usage in app js
+
 class Hangman {
   constructor(word, remainingGuesses) {
       this.word = word.toLowerCase().split('');
@@ -16,7 +20,7 @@ class Hangman {
         this.status = 'playing'
     }
   }
-  getStatusMessage() {
+  get StatusMessage() {
     let statusMessage = '';
 
     if (this.status === 'playing') {
@@ -29,7 +33,7 @@ class Hangman {
 
     return statusMessage;
   }
-  getPuzzle() {
+  get Puzzle() {
     let puzzle = '';
 
     this.word.forEach((letter) => {
