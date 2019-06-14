@@ -9,6 +9,7 @@ class Hangman {
       this.guessedLetters = [];
       this.status = 'playing';
   }
+
   calculateStatus() {
     const finished = this.word.every((letter) => this.guessedLetters.includes(letter) || letter === ' ')
 
@@ -20,6 +21,7 @@ class Hangman {
         this.status = 'playing';
     }
   }
+
   get StatusMessage() {
     let statusMessage = '';
 
@@ -33,6 +35,7 @@ class Hangman {
 
     return statusMessage;
   }
+
   get Puzzle() {
     let puzzle = '';
 
@@ -46,6 +49,7 @@ class Hangman {
 
     return puzzle;
   }
+  
   makeGuess = function (guess) {
     if (this.status == 'playing') {
         guess = guess.toLowerCase();
