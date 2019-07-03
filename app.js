@@ -20,8 +20,23 @@ getPuzzle((error, puzzle) => {
     }
 })
 
-// Making an HTTP request
+/* 
+1) create a new function for getting country details
+2) call it with two arguments: country code, the callback function
+3) make the http request and call the callback with country information
+4) use the callback to print the country name
+*/
 
+getCountryDeets("AF", (error, details) => {
+    if (error) {
+        console.log(`Error: ${error}`);
+    } else {
+        console.log(details);
+    }
+})
+
+
+// Making an HTTP request
 
 // const countryCode = "MX"
 // const countryRequest = new XMLHttpRequest()
