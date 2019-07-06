@@ -1,55 +1,28 @@
-const puzzleEl = document.querySelector('#puzzle')
-const guessesEl = document.querySelector('#guesses')
-const game1 = new Hangman('Car Parts', 2)
+const puzzleEl = document.querySelector('#puzzle');
+const guessesEl = document.querySelector('#guesses');
+const game1 = new Hangman('car parts', 10);
 
-puzzleEl.textContent = game1.puzzle
-guessesEl.textContent = game1.statusMessage
+puzzleEl.textContent = game1.Puzzle;
+guessesEl.textContent = game1.StatusMessage;
 
 window.addEventListener('keypress', (e) => {
-    const guess = String.fromCharCode(e.charCode)
-    game1.makeGuess(guess)
-    puzzleEl.textContent = game1.puzzle
-    guessesEl.textContent = game1.statusMessage
+    const guess = String.fromCharCode(e.charCode);
+    game1.makeGuess(guess);
+    puzzleEl.textContent = game1.Puzzle;
+    guessesEl.textContent = game1.StatusMessage;
 })
 
-getPuzzle((error, puzzle) => {
-    if (error) {
-        console.log(`Error: ${error}`)
-    } else {
-        console.log(puzzle)
+const newRequest = new XMLHttpRequest();
+newRequest.addEventListener('readystatechange', (e) => {
+    if (e.target.readyState === 4 && e.target.status == 200) {
+        const data = JSON.parse(e.target.responseText);
+        const answer = data.find((country) => country.alpha2Code === countryCode);
+        answer ? console.log(answer.name) : console.log('Nope such country');
+        console.log(data);
+    } else if (e.target.readyState === 4) {
+        console.log('Some error occured..');
     }
 })
-
-/* 
-1) create a new function for getting country details
-2) call it with two arguments: country code, the callback function
-3) make the http request and call the callback with country information
-4) use the callback to print the country name
-*/
-
-getCountryDeets("AF", (error, details) => {
-    if (error) {
-        console.log(`Error: ${error}`);
-    } else {
-        console.log(details);
-    }
-})
-
-
-// Making an HTTP request
-
-// const countryCode = "MX"
-// const countryRequest = new XMLHttpRequest()
-
-// countryRequest.addEventListener('readystatechange', (e) => {
-//     if (e.target.readyState === 4 && e.target.status === 200) {
-//         const data = JSON.parse(e.target.responseText)
-//         const country = data.find((country) => country.alpha2Code === countryCode)
-//         console.log(country.name)
-//     } else if (e.target.readyStatet === 4) {
-//         console.log('Unable to fetch data')
-//     }
-// })
-
-// countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
-// countryRequest.send()
+newRequest.open('get', 'http://restcountries.eu/rest/v2/all');
+newRequest.send();
+const countryCode = "US";
