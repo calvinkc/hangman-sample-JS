@@ -14,12 +14,12 @@ window.addEventListener('keypress', (e) => {
 
 getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
-}, (err) => {
+}).catch((err) => {
     console.log(`Error: ${err}`)
 })
 
 getCountry('MX').then((country) => {
-    console.log(country.name)
-}, (err) => {
-    console.log(`Error: ${err}`)
+    console.log(country.name);
+}).catch((err) => {
+    console.log(`Error: ${err}`);
 })
