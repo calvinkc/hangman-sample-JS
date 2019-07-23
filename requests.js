@@ -13,11 +13,21 @@ const getPuzzle = (wordCount) => {
 const getCountry = (countryCode) => {
     return fetch('http://restcountries.eu/rest/v2/all').then((response) => {
         if (response.status === 200) {
-            return response.json();
+            return response.json()
         } else {
-            throw new Error('Couldn\'t fetch puzzle');
-        }      
+            throw new Error('Unable to fetch data')
+        }
     }).then((data) => {
-        return data.find((country) => country.alpha2Code === countryCode);
+        return data.find((country) => country.alpha2Code === countryCode)
+    })
+}
+
+const getLocation = () => {
+    return fetch('http://ipinfo.io/json?token=1a11bd55cc8f9c').then((response) => {
+        if (response.status === 200) {
+            return response.json()
+        } else {
+            throw new Error('Unable to fetch location')
+        }
     })
 }
