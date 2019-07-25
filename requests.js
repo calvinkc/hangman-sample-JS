@@ -23,7 +23,7 @@ const getCountry = (countryCode) => {
 }
 
 const getLocation = () => {
-    return fetch('http://ipinfo.io/json?token=1a11bd55cc8f9c').then((response) => {
+    return fetch('http://ipinfo.io/json?token=d372247a325ff0').then((response) => {
         if (response.status === 200) {
             return response.json()
         } else {
