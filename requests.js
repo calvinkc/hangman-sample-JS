@@ -40,13 +40,3 @@ const getCurrentCountry = async () => {
         throw new Error('nah not happening');
     }
 }
-
-// const dataLocation = await responseLocation.json().then(
-//     async (dataLocation) => {
-//         const dataListing = await responseCountry.json().then(
-//           async (dataListing) => {  
-//               return dataListing.find((country) => country.alpha2Code === dataLocation.alpha2Code);
-//           }
-//         )
-//     }
-// )  
