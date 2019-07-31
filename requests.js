@@ -27,3 +27,24 @@ const getLocation = async () => {
         throw new Error('nah not happening');
     }
 }
+
+const getCurrentCountry = async () => {
+    const responseLocation = await fetch('http://ipinfo.io/json?token=d372247a325ff0');
+    const responseCountry = await fetch('http://restcountries.eu/rest/v2/all');
+
+    if (responseLocation.status === 200) {
+        const dataLocation = await responseLocation.json().then(
+            async (dataLocation) => {
+                const dataListing = await responseCountry.json().then(
+                  async (dataListing) => {  
+                      return dataListing.find((country) => country.alpha2Code === dataLocation.alpha2Code);
+                  }
+                )
+            }
+        )        
+        return 
+    } else {
+        throw new Error('nah not happening');
+    }
+}
+
