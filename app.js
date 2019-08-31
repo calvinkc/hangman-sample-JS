@@ -15,7 +15,7 @@ window.addEventListener('keypress', (e) => {
 getPuzzle('2').then((puzzle) => {
     console.log(puzzle)
 }).catch((err) => {
-    console.log(`Error: ${err}`)
+    console.log(`Error:: ${err}`)
 })
 
 getCurrentCountry().then((country) => {
