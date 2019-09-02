@@ -14,7 +14,7 @@ const getCountry = async (countryCode) => {
         const data = await response.json();
         return data.find((country) => country.alpha2Code === countryCode);
     } else {
-         throw new Error('naw bro');
+        throw new Error('naw bro');
     }
 }
 
@@ -40,3 +40,4 @@ const getCurrentCountry = async () => {
         throw new Error('nah not happening');
     }
 }
+
